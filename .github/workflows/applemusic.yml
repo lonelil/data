@@ -1,0 +1,38 @@
+name: Update
+
+on:
+  push:
+    paths:
+      - ".github/workflows/applemusic.yml"
+      - "src/applemusic.ts"
+
+  schedule:
+    - cron: "0 12 * * *"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    name: Update
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v1
+
+      - name: Install Dependencies
+        run: bun install
+
+      - name: Run
+        run: bun applemusic
+
+      - name: Push to GitHub
+        run: |
+          git config user.name lonelil
+          git config user.email 51315646+lonelil@users.noreply.github.com
+          git add .
+          git commit -m "Update Apple Music Token" || exit 0
+          git push
