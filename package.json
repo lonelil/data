@@ -1,0 +1,17 @@
+{
+  "name": "data",
+  "module": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "applemusic": "bun run src/applemusic.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "ofetch": "^1.3.4"
+  }
+}
