@@ -22,4 +22,4 @@ const token = index_js.match(/(?=eyJh)(.*?)(?=")/)?.[0];
 
 console.log("got token", token);
 
-Bun.write("./data/token.txt", token);
+Bun.write("./data/applemusic.txt", token);
