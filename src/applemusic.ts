@@ -20,6 +20,10 @@ const index_js = await apple(index_js_path, {
 
 const token = index_js.match(/(?=eyJh)(.*?)(?=")/)?.[0];
 
-console.log("got token", token);
+if (token) {
+  console.log("got token", token);
 
-Bun.write("./data/applemusic.txt", token);
+  Bun.write("./data/applemusic.txt", token);
+} else {
+  console.log("no token found");
+}
