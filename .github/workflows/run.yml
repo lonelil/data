@@ -27,7 +27,7 @@ jobs:
         run: bun install
 
       - name: Run
-        run: bun run src/applemusic.ts & bun run src/applemaps.ts
+        run: bun run src/applemusic.ts & bun run src/applemaps.ts & bun run src/qobuz.ts
 
       - name: Push to GitHub
         run: |
