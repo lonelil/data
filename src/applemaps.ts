@@ -16,6 +16,29 @@ if (token) {
   console.log("got token", token);
 
   Bun.write("./data/applemaps.txt", token);
+
+  const bootstrap = await apple("https://cdn.apple-mapkit.com/ma/bootstrap", {
+    query: {
+      apiVersion: "2",
+      mkjsVersion: "5.78.37",
+      poi: "1",
+    },
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  console.log("got bootstrap", bootstrap);
+  const tile = bootstrap.tileSources[0];
+
+  if (tile) {
+    console.log("got tile", tile);
+
+    Bun.write(
+      "./data/applemaps-tile.txt",
+      new URLSearchParams(tile.path).get("accessKey") ?? ""
+    );
+  }
 } else {
   console.log("no token found");
 }
