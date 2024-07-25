@@ -29,15 +29,11 @@ if (token) {
   });
 
   console.log("got bootstrap", bootstrap);
-  const tile = bootstrap.tileSources[0];
 
-  if (tile) {
-    console.log("got tile", tile);
+  if (bootstrap.accessKey) {
+    console.log("got accessKey", bootstrap.accessKey);
 
-    Bun.write(
-      "./data/applemaps-tile.txt",
-      new URLSearchParams(tile.path).get("accessKey") ?? ""
-    );
+    Bun.write("./data/applemaps-tile.txt", bootstrap.accessKey);
   }
 } else {
   console.log("no token found");
